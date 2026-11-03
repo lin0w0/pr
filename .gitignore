@@ -1,0 +1,8 @@
+# 数据集
+data/
+
+# 模型权重
+weights/
+
+# VS Code 配置
+.vscode/
