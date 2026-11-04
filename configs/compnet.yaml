@@ -1,0 +1,19 @@
+name: compnet
+module_path: official_project/compnet/CompNet/models/compnet.py
+class_name: compnet
+num_classes: 600
+feature_dim: 512
+input_size: 128
+
+init:
+  num_classes: 600
+
+checkpoint:
+  path: weights/CompNet/compnet.pth
+  sha256: e27c86179dad2a69e9d9c7d4365eae5a31c3ccb4770a891a4ea3c1844d9f8a9a
+  ignore_prefixes: []
+  expected_ignored_keys: 0
+
+batch:
+  inference: 256
+  attack: 128

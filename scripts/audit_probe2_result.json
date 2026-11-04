@@ -1,0 +1,107 @@
+{
+  "checkpoint_meta": {
+    "compnet": {
+      "path": "weights/CompNet/compnet.pth",
+      "sha256": "e27c86179dad2a69e9d9c7d4365eae5a31c3ccb4770a891a4ea3c1844d9f8a9a",
+      "size_bytes": 21210404
+    },
+    "ccnet": {
+      "path": "weights/CCNet/ccnet.pth",
+      "sha256": "288678c178f33675e0f15231dd0d1134131cde6f3960955dab5fce92a8cd3955",
+      "size_bytes": 254250184
+    }
+  },
+  "preprocess_equivalence": {
+    "max_abs_diff": 1.1920928955078125e-06,
+    "allclose": true
+  },
+  "forward_grad": {
+    "build_load": {
+      "compnet": {
+        "missing": [],
+        "unexpected": [],
+        "strict": true
+      },
+      "ccnet": {
+        "extras_in_checkpoint": 36,
+        "extras_all_documented": true,
+        "active_keys_loaded": 59,
+        "missing": [],
+        "unexpected": [],
+        "strict_after_filter": true,
+        "model_keys_not_in_ckpt": []
+      }
+    },
+    "input_shape": [
+      4,
+      1,
+      128,
+      128
+    ],
+    "raw_range": [
+      0.19607843458652496,
+      0.48627451062202454
+    ],
+    "norm_mean": 7.078051567077637e-08,
+    "norm_std": 0.9999508857727051,
+    "compnet": {
+      "feature_dim": 512,
+      "expected_dim": 512,
+      "feature_norm": 1.0,
+      "logits_shape": [
+        4,
+        600
+      ],
+      "forward_ms_batch4": 3.33,
+      "input_grad_finite": true,
+      "input_grad_absmax": 0.026784859597682953,
+      "input_grad_nonzero_frac": 1.0,
+      "param_grads_after": 0,
+      "sgm_grad_finite": true,
+      "sgm_grad_absmax": 0.0770038515329361,
+      "sgm_grad_shape": [
+        4,
+        1,
+        128,
+        65
+      ]
+    },
+    "ccnet": {
+      "feature_dim": 2048,
+      "expected_dim": 2048,
+      "feature_norm": 1.0,
+      "logits_shape": [
+        4,
+        600
+      ],
+      "forward_ms_batch4": 14.17,
+      "input_grad_finite": true,
+      "input_grad_absmax": 0.048062484711408615,
+      "input_grad_nonzero_frac": 1.0,
+      "param_grads_after": 0,
+      "sgm_grad_finite": true,
+      "sgm_grad_absmax": 0.2203063666820526,
+      "sgm_grad_shape": [
+        4,
+        1,
+        128,
+        65
+      ]
+    }
+  },
+  "rank1_small": {
+    "n_ids": 100,
+    "gallery_images": 1000,
+    "protocol": "proto = mean of 10 session1 images, probe = each session2 image",
+    "compnet": {
+      "rank1_prototype": 100.0,
+      "closedset_acc_arcface": 100.0,
+      "batch_size": 256
+    },
+    "ccnet": {
+      "rank1_prototype": 100.0,
+      "closedset_acc_arcface": 100.0,
+      "batch_size": 64
+    }
+  }
+}

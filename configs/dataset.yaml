@@ -1,0 +1,38 @@
+# Tongji palmprint ROI dataset and evaluation split (protocol A, confirmed 2026-11-03).
+dataset:
+  name: tongji
+  root: data/TongjI/ROI
+  sessions: [session1, session2]
+  num_identities: 600
+  images_per_identity: 10
+  input_size: 128
+  file_extension: .bmp
+  label_rule: "(int(filename[:5]) - 1) // 10"
+
+split:
+  protocol: A
+  name: tongji_A
+  seed: 0
+  output_dir: splits
+  # image_indices are inclusive, 0-based within each identity's sorted filenames.
+  gallery:
+    session: session1
+    image_indices: all
+  validation:
+    session: session2
+    image_indices: [0, 4]
+  test:
+    session: session2
+    image_indices: [5, 9]
+
+gallery:
+  # logits = temperature_scale * cosine(query, prototype)
+  temperature_scale: 30.0
+  cache_dir: cache
+
+runtime:
+  seed: 0
+  deterministic: true
+  device: cuda:0
+  num_workers: 0
+  inference_batch_size: 256

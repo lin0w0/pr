@@ -1,0 +1,60 @@
+{
+  "protocol": "A",
+  "name": "tongji_A",
+  "seed": 0,
+  "generated_at_utc": "2026-11-03T13:29:25.844485+00:00",
+  "dataset": {
+    "name": "tongji",
+    "root": "data/TongjI/ROI",
+    "sessions": [
+      "session1",
+      "session2"
+    ],
+    "num_identities": 600,
+    "images_per_identity": 10,
+    "input_size": 128,
+    "file_extension": ".bmp",
+    "label_rule": "(int(filename[:5]) - 1) // 10"
+  },
+  "split": {
+    "protocol": "A",
+    "name": "tongji_A",
+    "seed": 0,
+    "output_dir": "splits",
+    "gallery": {
+      "session": "session1",
+      "image_indices": "all"
+    },
+    "validation": {
+      "session": "session2",
+      "image_indices": [
+        0,
+        4
+      ]
+    },
+    "test": {
+      "session": "session2",
+      "image_indices": [
+        5,
+        9
+      ]
+    }
+  },
+  "files": {
+    "gallery": {
+      "file": "splits/tongji_A/gallery.csv",
+      "n": 6000,
+      "sha256": "b9d3d9a889870c083c3f14895f36e46590eac2e9b507d2fc1ca7188e7ac2e045"
+    },
+    "validation": {
+      "file": "splits/tongji_A/validation.csv",
+      "n": 3000,
+      "sha256": "490fa4795232b482f0cad7669fd6c93bf02f6d063f623d459a6cd7727327c230"
+    },
+    "test": {
+      "file": "splits/tongji_A/test.csv",
+      "n": 3000,
+      "sha256": "0619b9fc8a389204d1020999c3456adf323653d52b49efac6d03899df4728bdd"
+    }
+  }
+}

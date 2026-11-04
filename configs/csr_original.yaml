@@ -1,0 +1,17 @@
+# Original CSR hyperparameters.
+# Paper defaults for 224x224 CLIP: radius=40, tau=0.85, N=3, eps=4/255, alpha=2/255.
+# For 128x128 palmprint, radius is converted by normalized frequency:
+#   r_128 = 40 * 128 / 224 = 22.857
+csr:
+  filter_type: gaussian
+  radius: 22.857142857142858
+  radius_original_pixels_224: 40
+  lambda: 1.0
+  steps: 3
+  eps: 0.01568627450980392   # 4/255
+  alpha: 0.00784313725490196 # 2/255
+  pixel_clamp: true
+  detection:
+    tau_original: 0.85
+    target_fpr: 0.05          # calibration IDs 0-99; used when explicit tau is null
+    tau: null

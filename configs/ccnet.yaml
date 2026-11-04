@@ -1,0 +1,23 @@
+name: ccnet
+module_path: official_project/CCNet/models/ccnet.py
+class_name: ccnet
+num_classes: 600
+feature_dim: 2048
+input_size: 128
+
+init:
+  num_classes: 600
+  weight: 0.8
+
+checkpoint:
+  path: weights/CCNet/ccnet.pth
+  sha256: 288678c178f33675e0f15231dd0d1134131cde6f3960955dab5fce92a8cd3955
+  # The released checkpoint contains 36 attention tensors that are absent from
+  # the official forward graph (see PROJECT_AUDIT.md section 5). Every other key
+  # is required to match strictly.
+  ignore_prefixes: [cb1.att_, cb2.att_, cb3.att_]
+  expected_ignored_keys: 36
+
+batch:
+  inference: 64
+  attack: 64

@@ -1,0 +1,34 @@
+{
+  "n_gallery": 6000,
+  "n_probe": 6000,
+  "compnet": {
+    "rank1": 100.0,
+    "rank5": 100.0,
+    "eer_pct": 0.0175,
+    "tar_at_far_1pct": 100.0,
+    "tar_at_far_0.1pct": 100.0,
+    "n_genuine_pairs": 60000,
+    "n_impostor_pairs": 35940000,
+    "score_range": [
+      0.2328,
+      0.9618
+    ],
+    "feature_extraction_s": 10.1,
+    "feature_dim": 512
+  },
+  "ccnet": {
+    "rank1": 100.0,
+    "rank5": 100.0,
+    "eer_pct": 0.0,
+    "tar_at_far_1pct": 100.0,
+    "tar_at_far_0.1pct": 100.0,
+    "n_genuine_pairs": 60000,
+    "n_impostor_pairs": 35940000,
+    "score_range": [
+      0.2868,
+      0.9723
+    ],
+    "feature_extraction_s": 22.6,
+    "feature_dim": 2048
+  }
+}

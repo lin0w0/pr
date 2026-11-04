@@ -1,0 +1,119 @@
+{
+  "env": {
+    "python": "3.10.22",
+    "torch": "2.5.1+cu121",
+    "cuda_available": true,
+    "cuda_version": "12.1",
+    "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "gpu_mem_GB": 8.6,
+    "numpy": "2.2.6"
+  },
+  "dataset": {
+    "session1": {
+      "n": 6000,
+      "unique_ids": 6000,
+      "unique_labels": 600,
+      "per_label": 10,
+      "image_sizes": [
+        "((128, 128), 'L')"
+      ],
+      "first": "00001.bmp",
+      "last": "06000.bmp"
+    },
+    "session2": {
+      "n": 6000,
+      "unique_ids": 6000,
+      "unique_labels": 600,
+      "per_label": 10,
+      "image_sizes": [
+        "((128, 128), 'L')"
+      ],
+      "first": "00001.bmp",
+      "last": "06000.bmp"
+    },
+    "same_filenames": true
+  },
+  "checkpoints": {
+    "compnet": {
+      "weights_only=True": "ok",
+      "type": "OrderedDict",
+      "n_keys": 36,
+      "n_params": 5301137,
+      "nbytes_MB": 21.2,
+      "dtypes": [
+        "torch.float32"
+      ],
+      "first_keys": [
+        "cb1.a",
+        "cb1.b",
+        "cb1.gabor_conv2d.gamma",
+        "cb1.gabor_conv2d.sigma",
+        "cb1.gabor_conv2d.theta",
+        "cb1.gabor_conv2d.f"
+      ],
+      "classifier_shapes": {
+        "arclayer.weight": [
+          600,
+          512
+        ]
+      },
+      "size_MB": 21.2
+    },
+    "ccnet": {
+      "weights_only=True": "ok",
+      "type": "OrderedDict",
+      "n_keys": 95,
+      "n_params": 63554636,
+      "nbytes_MB": 254.2,
+      "dtypes": [
+        "torch.float32"
+      ],
+      "first_keys": [
+        "cb1.gabor_conv2d.gamma",
+        "cb1.gabor_conv2d.sigma",
+        "cb1.gabor_conv2d.theta",
+        "cb1.gabor_conv2d.f",
+        "cb1.gabor_conv2d.psi",
+        "cb1.gabor_conv2d2.gamma"
+      ],
+      "classifier_shapes": {
+        "arclayer_.weight": [
+          600,
+          2048
+        ]
+      },
+      "size_MB": 254.3
+    }
+  },
+  "model_build_and_load": {
+    "error": "RuntimeError('Error(s) in loading state_dict for ccnet:\\n\\tUnexpected key(s) in state_dict: \"cb1.att_1.conv0.weight\", \"cb1.att_1.conv0.bias\", \"cb1.att_1.conv_spatial.weight\", \"cb1.att_1.conv_spatial.bias\", \"cb1.att_1.conv1.weight\", \"cb1.att_1.conv1.bias\", \"cb1.att_2.conv0.weight\", \"cb1.att_2.conv0.bias\", \"cb1.att_2.conv_spatial.weight\", \"cb1.att_2.conv_spatial.bias\", \"cb1.att_2.conv1.weight\", \"cb1.att_2.conv1.bias\", \"cb2.att_1.conv0.weight\", \"cb2.att_1.conv0.bias\", \"cb2.att_1.conv_spatial.weight\", \"cb2.att_1.conv_spatial.bias\", \"cb2.att_1.conv1.weight\", \"cb2.att_1.conv1.bias\", \"cb2.att_2.conv0.weight\", \"cb2.att_2.conv0.bias\", \"cb2.att_2.conv_spatial.weight\", \"cb2.att_2.conv_spatial.bias\", \"cb2.att_2.conv1.weight\", \"cb2.att_2.conv1.bias\", \"cb3.att_1.conv0.weight\", \"cb3.att_1.conv0.bias\", \"cb3.att_1.conv_spatial.weight\", \"cb3.att_1.conv_spatial.bias\", \"cb3.att_1.conv1.weight\", \"cb3.att_1.conv1.bias\", \"cb3.att_2.conv0.weight\", \"cb3.att_2.conv0.bias\", \"cb3.att_2.conv_spatial.weight\", \"cb3.att_2.conv_spatial.bias\", \"cb3.att_2.conv1.weight\", \"cb3.att_2.conv1.bias\". ')",
+    "trace": "Traceback (most recent call last):\n  File \"D:\\code\\palmprint_csr\\scripts\\audit_probe.py\", line 48, in deco\n    REPORT[name] = fn()\n  File \"D:\\code\\palmprint_csr\\scripts\\audit_probe.py\", line 140, in _build_and_load\n    missing, unexpected = net.load_state_dict(sd, strict=True)\n  File \"D:\\code\\research\\envs\\pr\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 2584, in load_state_dict\n    raise RuntimeError(\nRuntimeError: Error(s) in loading state_dict for ccnet:\n\tUnexpected key(s) in state_dict: \"cb1.att_1.conv0.weight\", \"cb1.att_1.conv0.bias\", \"cb1.att_1.conv_spatial.weight\", \"cb1.att_1.conv_spatial.bias\", \"cb1.att_1.conv1.weight\", \"cb1.att_1.conv1.bias\", \"cb1.att_2.conv0.weight\", \"cb1.att_2.conv0.bias\", \"cb1.att_2.conv_spatial.weight\", \"cb1.att_2.conv_spatial.bias\", \"cb1.att_2.conv1.weight\", \"cb1.att_2.conv1.bias\", \"cb2.att_1.conv0.weight\", \"cb2.att_1.conv0.bias\", \"cb2.att_1.conv_spatial.weight\", \"cb2.att_1.conv_spatial.bias\", \"cb2.att_1.conv1.weight\", \"cb2.att_1.conv1.bias\", \"cb2.att_2.conv0.weight\", \"cb2.att_2.conv0.bias\", \"cb2.att_2.conv_spatial.weight\", \"cb2.att_2.conv_spatial.bias\", \"cb2.att_2.conv1.weight\", \"cb2.att_2.conv1.bias\", \"cb3.att_1.conv0.weight\", \"cb3.att_1.conv0.bias\", \"cb3.att_1.conv_spatial.weight\", \"cb3.att_1.conv_spatial.bias\", \"cb3.att_1.conv1.weight\", \"cb3.att_1.conv1.bias\", \"cb3.att_2.conv0.weight\", \"cb3.att_2.conv0.bias\", \"cb3.att_2.conv_spatial.weight\", \"cb3.att_2.conv_spatial.bias\", \"cb3.att_2.conv1.weight\", \"cb3.att_2.conv1.bias\". \n"
+  },
+  "preprocess_and_forward": {
+    "error": "RuntimeError('Error(s) in loading state_dict for ccnet:\\n\\tUnexpected key(s) in state_dict: \"cb1.att_1.conv0.weight\", \"cb1.att_1.conv0.bias\", \"cb1.att_1.conv_spatial.weight\", \"cb1.att_1.conv_spatial.bias\", \"cb1.att_1.conv1.weight\", \"cb1.att_1.conv1.bias\", \"cb1.att_2.conv0.weight\", \"cb1.att_2.conv0.bias\", \"cb1.att_2.conv_spatial.weight\", \"cb1.att_2.conv_spatial.bias\", \"cb1.att_2.conv1.weight\", \"cb1.att_2.conv1.bias\", \"cb2.att_1.conv0.weight\", \"cb2.att_1.conv0.bias\", \"cb2.att_1.conv_spatial.weight\", \"cb2.att_1.conv_spatial.bias\", \"cb2.att_1.conv1.weight\", \"cb2.att_1.conv1.bias\", \"cb2.att_2.conv0.weight\", \"cb2.att_2.conv0.bias\", \"cb2.att_2.conv_spatial.weight\", \"cb2.att_2.conv_spatial.bias\", \"cb2.att_2.conv1.weight\", \"cb2.att_2.conv1.bias\", \"cb3.att_1.conv0.weight\", \"cb3.att_1.conv0.bias\", \"cb3.att_1.conv_spatial.weight\", \"cb3.att_1.conv_spatial.bias\", \"cb3.att_1.conv1.weight\", \"cb3.att_1.conv1.bias\", \"cb3.att_2.conv0.weight\", \"cb3.att_2.conv0.bias\", \"cb3.att_2.conv_spatial.weight\", \"cb3.att_2.conv_spatial.bias\", \"cb3.att_2.conv1.weight\", \"cb3.att_2.conv1.bias\". ')",
+    "trace": "Traceback (most recent call last):\n  File \"D:\\code\\palmprint_csr\\scripts\\audit_probe.py\", line 48, in deco\n    REPORT[name] = fn()\n  File \"D:\\code\\palmprint_csr\\scripts\\audit_probe.py\", line 171, in _forward\n    net2.load_state_dict(sd_x)\n  File \"D:\\code\\research\\envs\\pr\\lib\\site-packages\\torch\\nn\\modules\\module.py\", line 2584, in load_state_dict\n    raise RuntimeError(\nRuntimeError: Error(s) in loading state_dict for ccnet:\n\tUnexpected key(s) in state_dict: \"cb1.att_1.conv0.weight\", \"cb1.att_1.conv0.bias\", \"cb1.att_1.conv_spatial.weight\", \"cb1.att_1.conv_spatial.bias\", \"cb1.att_1.conv1.weight\", \"cb1.att_1.conv1.bias\", \"cb1.att_2.conv0.weight\", \"cb1.att_2.conv0.bias\", \"cb1.att_2.conv_spatial.weight\", \"cb1.att_2.conv_spatial.bias\", \"cb1.att_2.conv1.weight\", \"cb1.att_2.conv1.bias\", \"cb2.att_1.conv0.weight\", \"cb2.att_1.conv0.bias\", \"cb2.att_1.conv_spatial.weight\", \"cb2.att_1.conv_spatial.bias\", \"cb2.att_1.conv1.weight\", \"cb2.att_1.conv1.bias\", \"cb2.att_2.conv0.weight\", \"cb2.att_2.conv0.bias\", \"cb2.att_2.conv_spatial.weight\", \"cb2.att_2.conv_spatial.bias\", \"cb2.att_2.conv1.weight\", \"cb2.att_2.conv1.bias\", \"cb3.att_1.conv0.weight\", \"cb3.att_1.conv0.bias\", \"cb3.att_1.conv_spatial.weight\", \"cb3.att_1.conv_spatial.bias\", \"cb3.att_1.conv1.weight\", \"cb3.att_1.conv1.bias\", \"cb3.att_2.conv0.weight\", \"cb3.att_2.conv0.bias\", \"cb3.att_2.conv_spatial.weight\", \"cb3.att_2.conv_spatial.bias\", \"cb3.att_2.conv1.weight\", \"cb3.att_2.conv1.bias\". \n"
+  },
+  "fft_chain": {
+    "H": 128,
+    "W": 128,
+    "roundtrip_max_abs_err": 1.7881393432617188e-07,
+    "amp_recon_max_abs_err": 1.7881393432617188e-07,
+    "recon_requires_grad": true,
+    "rho_max": 0.9999999403953552,
+    "mask_shape": [
+      128,
+      65
+    ],
+    "sgm_grad_ok": true,
+    "sgm_grad_shape": [
+      1,
+      1,
+      128,
+      65
+    ],
+    "sgm_grad_absmax": 1.0395824909210205,
+    "n_zeros_in_grad": 0,
+    "pixel_grad_ok": true,
+    "pixel_grad_absmax": 1.281890704696309e-10
+  }
+}

@@ -1,0 +1,85 @@
+fft:
+  norm: ortho
+sigma:
+  values:
+  - 0.02
+  - 0.05
+  - 0.1
+  - 0.15
+  - 0.2
+  - 0.3
+  - 0.5
+  - 0.75
+  - 1.0
+  - 1.5
+  response_rho_points:
+  - 0.0
+  - 0.05
+  - 0.1
+  - 0.2
+  - 0.3
+  - 0.5
+  - 0.75
+  - 1.0
+bands:
+  low:
+  - 0.0
+  - 0.2
+  middle:
+  - 0.2
+  - 0.5
+  high:
+  - 0.5
+  - 1.0
+noise:
+  sigma: 0.05
+  seed: 0
+attacks:
+  pgd:
+    eps: 0.00784313725490196
+    alpha: 0.00392156862745098
+    steps: 50
+    random_start: true
+    restarts: 1
+    seed: 0
+    loss: margin
+    scale: 10
+    batch_size:
+      compnet: 128
+      ccnet: 64
+  apgd:
+    eps: 0.00784313725490196
+    steps: 50
+    restarts: 1
+    seed: 0
+    loss: ce
+    scale: 30
+    batch_size:
+      compnet: 64
+      ccnet: 32
+  band:
+    eps: 0.00784313725490196
+    alpha: 0.00392156862745098
+    steps: 30
+    random_start: true
+    seed: 0
+    loss: margin
+    scale: 10
+    dykstra_iters: 20
+    dykstra_tol: 1.0e-06
+    max_band_outside_ratio: 0.001
+    max_box_violation: 1.0e-06
+    max_linf_excess: 1.0e-06
+    batch_size:
+      compnet: 64
+      ccnet: 32
+sgm:
+  batch_size: 16
+  min_batch: 4
+  primary:
+    loss: margin
+    scale: 10
+  control:
+    loss: ce
+    scale: 10
+  radial_bins: 50

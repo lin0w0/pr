@@ -6,3 +6,13 @@ weights/
 
 # VS Code 配置
 .vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# 运行时产物（splits/ 需要纳入版本管理，勿忽略）
+results/
+cache/

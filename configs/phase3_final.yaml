@@ -1,0 +1,44 @@
+# Phase 3 final detection validation.
+detection:
+  single_sigma:
+    compnet: 0.5
+    ccnet: 0.3
+  multi_sigmas: [0.1, 0.15, 0.2]
+  multi_method: mean
+  # thresholds are loaded from results/phase3_detection_preliminary/thresholds_and_summary.json
+  threshold_source: results/phase3_detection_preliminary/thresholds_and_summary.json
+
+evaluation:
+  # Held-out validation identities used for A1/A2 (models calibrated on 0-99).
+  identity_start: 100
+  identity_end: 299
+
+attacks:
+  band:
+    bands: [low, middle, high]
+    # reuses configs/spectral.yaml attacks.band (eps, alpha, steps, seed)
+  cw:
+    c_candidates: [0.1, 1.0, 10.0, 100.0]
+    steps: 100
+    lr: 0.01
+    kappa: 0.0
+    calibration_identity_end: 19
+    evaluation_identity_start: 100
+    evaluation_identity_end: 199
+  adaptive:
+    eps: 0.00784313725490196   # 2/255, same as detector evaluation attacks
+    alpha: 0.00392156862745098 # 1/255
+    steps: 30
+    lambdas: [0.1, 0.5, 1.0, 2.0]
+    calibration_identity_end: 19
+    evaluation_identity_start: 100
+    evaluation_identity_end: 199
+
+perturbations:
+  gaussian_noise: [0.01, 0.03, 0.05, 0.10]
+  gaussian_blur_sigma: [0.5, 1.0, 2.0]
+  brightness_delta: [-0.10, -0.05, 0.05, 0.10]
+  contrast_factor: [0.8, 1.2]
+  jpeg_quality: [90, 70, 50]
+  rotation_degrees: [2, 5, 10]
+  translation_pixels: [1, 2, 4]
